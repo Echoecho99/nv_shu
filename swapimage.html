@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Event/ Flow</title>
+
+      
+</head>
+    <body>
+        <form>
+        	<fieldset>
+        		<label>First Option</label>
+        		<select id="first-option" class="dropdown">
+        			<option value="00">1</option>
+        			<option value="01">2</option>
+        			<option value="02">3</option>
+        		</select>
+        	</fieldset>
+
+        	<fieldset>
+        		<label>Second Option</label>
+        		<select id="second-option" class="dropdown">
+        			<option value="00">1</option>
+        			<option value="01">2</option>
+        			<option value="02">3</option>
+        		</select>
+        	</fieldset>
+        </form>
+
+        <div>
+        	<img id="image-output" scr="iterations/out256_02_00.jpg" />
+
+        </div>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script type="text/javascript">
+        	$('.dropdown').on('change',function(){
+        		var firstOptionEl = $('#first-option').find('option:selected');
+        		var secondOptionEl = $('#second-option').find('option:selected');
+
+        		var firstOptionSelected = firstOptionEl.attr('value');
+        		var secondOptionSelected = secondOptionEl.attr('value');
+        		
+        		console.log(firstOptionSelected)
+        		console.log(secondOptionSelected)
+
+        		var newImgUrlPrefix = 'iterations/out256_';
+        		var newImgUrlSuffix = '.jpg';
+
+        	
+        		var newImgUrl = newImgUrlPrefix + firstOptionSelected + "_" + secondOptionSelected + newImgUrlSuffix;
+        		console.log(newImgUrl);
+
+        		
+        		$('#image-output').attr('src', newImgUrl);
+        	})
+        </script>
+   	
+
+    </body>
+</html>

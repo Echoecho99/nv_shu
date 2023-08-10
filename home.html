@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Event/ Flow</title>
+    <style>
+      *{margin: 0;
+        padding: 0;
+        box-sizing: border-box;}
+
+        .container {
+      position: relative;
+    }
+
+    .header {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100%;
+      height: 50px;
+      
+      color: #6b82bd;
+      font-size: 18px;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+
+        .content{display: flex;
+          flex-direction: row;
+          height: 100vh;
+        cursor: pointer;
+      }
+
+        .column{height: 100%;
+          width:100%;
+          border:3px solid SteelBlue;
+          background-color: #ccc;
+        }
+        
+        .column.selected {border:3px #fff}
+
+       .column img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img.selected {background-color: #B0C4DE;}
+
+
+      .info-container {
+      position: fixed;
+      left: 10px;
+      top: 50px;
+      width: 20%;
+      height: 90%;
+      background-color: #B0C4DE;
+      overflow-y: scroll;
+      display: none;
+      padding: 20px;
+      opacity: 70%;
+    }
+
+    .nvshu_pic img {
+     width: 50%;
+     margin-left: -40px;
+     
+    }
+
+    .text p {
+    margin-top: 20px;
+    }
+
+    
+
+    .bird img {
+     width: 100%;
+     margin-top: 40px; 
+     background-color: #fff
+    }
+
+    .skin_pic img {
+     width: 50%;
+     margin-left: -50px;
+     margin-top: 40px;
+     
+    }
+
+
+    </style>
+</head>
+    <body>
+      
+      <div class="container">
+    <div class="header"><p>NÜSHU</p></div>
+    
+
+    <div class="info-container" id="infoContainer">
+      <div class="nvshu_pic">
+       <img src="pictures/nushu.png" alt="Image 5"> 
+      </div>
+      
+      <div class="text">
+       <div class="text1"><p>Nüshu is a syllabic script created and used exclusively by Ancient Yao women in Jiangyong Prefecture, Hunan Province, China. The women were forbidden formal education for many centuries and developed the Nüshu script in order to communicate with one another.
+      </p></div>
+
+      <div class="text2"><p>“Nushu”, the secret written language of women, is often written in the format of poems, letters and songs. It serves as an escape and a secret medium for woman to express their pain, sorrow and hope to another woman.
+      </p></div> 
+
+      <div class="bird">
+       <img src="pictures/BIRD.png" alt="Image 6"> 
+      </div>
+
+      <div class="skin_pic">
+       <img src="pictures/skin.png" alt="Image 7"> 
+      </div>
+
+      <div class="text3"><p>Ancient Yao women had the custom of tattooing, and they regarded tattoos as a sign of beauty and a way of carrying memories. 
+In Glitch Feminism, the author describes skin as a container. “It is a peel that contains and cradles wildness. It gives shape to bodies. A break, tear, rupture, or cut in skin opens a portal and passageway. Here, too, is both a world and a wound. Skin is both open and closed. Its presence suggests permanence, a border not meant to be crossed...It releases fluids and, at the same time, retains them.”
+      </p></div>
+
+       <div class="text4"><p>In the context of Glitch Feminism, this portrayal of skin becomes even more captivating, as it embodies the essence of our newly born digital existence. Drawing from a female perspective, I seek to carry the memories of the past and channel them into our digital lives, bridging history with the present.
+      </p></div>
+
+      <div class="text5"><p>This project aims to create a digital platform situated on social media that preserves the Nüshu language, explores its cultural context, and promotes feminist ideals.As we explore this uncharted territory of digital life, we are presented with an opportunity to open a gate—a gateway that connects not only the physical world but also the digital realm. It is a gate that allows our experiences, thoughts, and emotions to flow freely, unbound by traditional constraints.
+      </p></div>
+
+      </div>
+      
+
+
+
+      <!-- Add more content as needed -->
+    </div>
+
+
+    <div class="content">
+      <div class="column" id="column-0">
+        <img src="pictures/7.jpg" alt="Image 1">
+      </div>
+      <div class="column" id="column-1">
+        <img src="pictures/2.jpg" alt="Image 2">
+      </div>
+      <div class="column" id="column-2">
+        <img src="pictures/3.jpg" alt="Image 3">
+      </div>
+      <div class="column" id="column-3">
+        <img src="pictures/4.jpg" alt="Image 4">
+      </div>
+    </div>
+  </div>
+
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+      <script type="text/javascript">
+        console.log("hello world");
+        var windowwidth = $(window).width();
+        console.log(windowwidth);
+
+        $(window).on("mousemove", function(evt){
+          var mouseX =evt.pageX;
+          var mouseY =evt.pageY;
+
+          var mousestatus = mouseX + "," + mouseY;
+          console.log(mousestatus);
+
+          $('.column.selected').removeClass("selected");
+
+          if (mouseX >0 &&  mouseX < windowwidth * (1/4))
+            { console.log ("im in the first quarter");
+          $('#column-0').addClass("selected");} 
+
+          else if(mouseX >= windowwidth * (1/4) && mouseX < windowwidth * (2/4))
+          {$('#column-1').addClass("selected");}
+
+        else if(mouseX >= windowwidth * (2/4) && mouseX < windowwidth * (3/4))
+          {$('#column-2').addClass("selected");}
+
+        else if(mouseX >= windowwidth * (3/4) && mouseX < windowwidth * (4/4))
+          {$('#column-3').addClass("selected");}
+
+
+        });
+
+
+         // Toggle info container when NÜSHU header is clicked
+    $(".header").click(function () {
+      $("#infoContainer").toggle();
+    });
+
+
+
+    </script>
+
+    <script>
+  $(document).ready(function () {
+    // Add click event listener to the selected column
+    $(".content").on("click", ".column.selected", function () {
+      // Get the ID of the selected column
+      var selectedColumnId = $(this).attr("id");
+
+      // Redirect to the desired HTML page based on the selected column
+      switch (selectedColumnId) {
+        case "column-0":
+          window.location.href = "film_1.html"; // Replace "page1.html" with your desired page URL
+          break;
+        case "column-1":
+          window.location.href = "film_2.html"; // Replace "page2.html" with your desired page URL
+          break;
+        case "column-2":
+          window.location.href = "film_3.html"; // Replace "page3.html" with your desired page URL
+          break;
+        case "column-3":
+          window.location.href = "film_4.html"; // Replace "page4.html" with your desired page URL
+          break;
+        default:
+          // Handle any other cases if needed
+          break;
+      }
+    });
+  });
+</script>
+
+    </body>
+</html>

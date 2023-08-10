@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Video Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+
+    #video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+
+    
+
+    .next img {
+      width: 3%;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      cursor: pointer;
+    }
+
+
+    .text-container {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      opacity: 0; /* Initially hidden */
+    }
+
+    .text-container p {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 0px;
+    }
+
+    /* Animation to gradually show the text */
+    @keyframes showText {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Apply the animation to the text-container */
+    .show-animation {
+      animation: showText 5s forwards; /* Change the time (2s) as needed */
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="video-container">
+    <video autoplay loop muted playsinline>
+      <source src="videos/2.mp4" type="video/mp4">
+      <!-- Add additional source tags for other video formats if needed -->
+    </video>
+  </div>
+
+  <div class="text-container show-animation">
+    <p>皮肤是一个容器，它给生命以形状。</p>
+    <p>Skin is a vessel, shaping life's form.</p>
+  </div>
+
+   
+    <div class="next" id="nextBtn">
+    <img src="pictures/arrow.png" alt="Image 1">
+  </div>
+
+  <script>
+    // Add click event listener to the "NEXT" arrow
+    document.getElementById("nextBtn").addEventListener("click", function () {
+      window.location.href = "home.html"; // Replace with your desired page URL
+    });
+  </script>
+ 
+</body>
+</html>
